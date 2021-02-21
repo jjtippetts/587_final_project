@@ -56,10 +56,22 @@ It is expected that postgres will have better performance because of the ability
 
 **4.**
 
-* i. What performance issue are you testing? 
+* i. What performance issue are you testing? Grabbing multiple attributes in a tuple as the database scales
 * ii. What data sets will you include in the test? Will you use a single size data set or will you use multiple data sets of different sizes?
+Use 1k, 10k, 100k, and 1000k relations
 * iii. What queries will you run? (provide the SQL)
+INSERT INTO TMP
+SELECT *
+FROM 100Ktup  
+WHERE customDataType.structNum BETWEEN 0 AND 99  
+
+INSERT INTO TMP
+SELECT *
+FROM 1000Ktup  
+WHERE customDataType.structNum BETWEEN 792 AND 1791  
+
 * iv. What results do you expect to get?
+It is expected that the postgres database will have the best query performance because it is a relational database which is optimized for storing rows whereas Google Big Query is a cloumnar database and optimized for storing columns of data. Since this query selects all of the data in a row, it is assummed that postgres will perform better.
 
 
 ## Lessons Learned

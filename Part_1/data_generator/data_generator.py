@@ -30,7 +30,7 @@ def convert(unique):
     
 def datagenerate(records, headers):
     with open("TENKTUP2.csv", 'wt', newline='') as csvFile:
-        writer = csv.DictWriter(csvFile, fieldnames=headers)
+        writer = csv.DictWriter(csvFile, fieldnames=headers, delimiter='|')
         writer.writeheader()
         unique2,unique1=[],[]
         string4Array = ["AAAA","HHHH","OOOO","VVVV"]
@@ -68,13 +68,15 @@ def datagenerate(records, headers):
                     "stringu1": stringu1converted+s11,
                     "stringu2": stringu2converted+s11,
                     "string4": string4value+s22,
+                    "complex": "(" + stringu1converted+s11 + "," + str(unique1[i]) + ")",
                     })
     
 if __name__ == '__main__':
     records = 10000
     headers = ["unique1", "unique2", "two", "four", "ten", "twenty",
                "onePercent", "tenPercent", "twentyPercent", "fiftyPercent",
-               "unique3", "evenOnePercent", "oddOnePercent", "stringu1", "stringu2", "string4"]
+               "unique3", "evenOnePercent", "oddOnePercent", "stringu1", "stringu2", "string4",
+               "complex"]
     datagenerate(records, headers)
     print("CSV generation complete!")
 

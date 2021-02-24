@@ -86,7 +86,8 @@ It is expected that postgres will have better performance because of the ability
 Grabbing multiple attributes in a tuple as the database scales
 * ii. What data sets will you include in the test? Will you use a single size data set or will you use multiple data sets of different sizes?
 Use 1k, 10k, 100k, and 1000k relations
-* iii. What queries will you run? (provide the SQL)
+* iii. What queries will you run? (provide the SQL)  
+
 INSERT INTO TMP   
 SELECT *   
 FROM 100Ktup  

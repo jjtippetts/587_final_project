@@ -93,8 +93,8 @@ SELECT *
 FROM 100Ktup  
 WHERE customDataType.structNum BETWEEN 0 AND 99  
 
-INSERT INTO TMP
-SELECT *
+INSERT INTO TMP  
+SELECT *  
 FROM 1000Ktup  
 WHERE customDataType.structNum BETWEEN 792 AND 1791  
 

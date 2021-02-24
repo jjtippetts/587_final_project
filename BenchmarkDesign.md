@@ -9,7 +9,6 @@ We chose to compare the performance of Google Big Query and Google Cloud SQL for
 
 ### Big Query 
 One of the first things that we noticed when researching Google Big Query is that it is not very customizable. For instance, Google Big Query doesn't allow for any sort of primary or secondary index to be created. This is because Google Big Query and many other cloud databases are columner databases. Columner databases are optimized for storing columns of data as compared to rows of data. Columnar datatabase are typically better suited to scale and big data processing.
-**Measuring Performance:** 
 
 ### Google Cloud SQL for Postgres
 Postgress in contrast to google Big Query, does allow for primary and secondary indexes. Postgress is also a relational database and is thus optimized for storing and retreiving rows of data. Postgres is also typically better at performing table joins of data.
@@ -83,12 +82,13 @@ It is expected that postgres will have better performance because of the ability
 
 **4.**
 
-* i. What performance issue are you testing? Grabbing multiple attributes in a tuple as the database scales
+* i. What performance issue are you testing?  
+Grabbing multiple attributes in a tuple as the database scales
 * ii. What data sets will you include in the test? Will you use a single size data set or will you use multiple data sets of different sizes?
 Use 1k, 10k, 100k, and 1000k relations
 * iii. What queries will you run? (provide the SQL)
-INSERT INTO TMP
-SELECT *
+INSERT INTO TMP   
+SELECT *   
 FROM 100Ktup  
 WHERE customDataType.structNum BETWEEN 0 AND 99  
 
@@ -102,7 +102,7 @@ It is expected that the postgres database will have the best query performance b
 
 
 ## Lessons Learned
-One lesson that we learned it that Google Big Query does not take in csv data with custom data types because they don't support nested data. To get around this you either have to load the data in using a filetype that does support nested data or if the struct data values are based off of other attributes you can add the struct data type after the rest of the data has been loaded in. Then fill in the struct column using the values from the other columns. We chose to load in the data using the second approach because are script to load in the data created a csv file.
+One lesson that we learned it that Google Big Query does not take in csv data with custom data types because they don't support nested data. To get around this you either have to load the data in using a filetype that does support nested data or if the struct data values are based off of other attributes you can add the struct data type after the rest of the data has been loaded in. Then fill in the struct column using the values from the other columns. We chose to load in the data using the second approach because our script to load in the data created a csv file.
 
 Furthermore, although deploying our databases through Google Cloud and virtual machines is generally quick and easy, there are some annoying drawbacks
 to not being given superuser priveleges on the Cloud, which can needlessly complicate testing. For example, using the PostgreSQL function COPY is off-
